@@ -29,17 +29,25 @@ jobs:
 
     - name: Insert Proxy Group & Rules around [Rule]
       run: |
-        # 插入 pr_group.txt 到 [Rule] 上方
-        awk '/^\[Rule\]/ { system("cat pr_group.txt"); print; next } 1' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
+         # 删除 Proxy Group 区块（BEGIN 到 END）
+         sed -i '/# BEGIN-PR-GROUP-CUSTOM/,/# END-PR-GROUP-CUSTOM/d' sr_top500_whitelist_ad.conf
 
-        # 插入 rule.txt 到 [Rule] 下方
-        awk 'BEGIN { found=0 }
-        /^\[Rule\]/ { print; found=1; next }
-        found==1 && !inserted {
-            system("cat rule.txt");
-            inserted=1
-        }
-        { print }' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
+         # 插入 pr_group.txt 到 [Rule] 上方
+         awk '/^\[Rule\]/ { system("cat pr_group.txt"); print; next } 1' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
+
+         # 删除 Rule 区块（BEGIN 到 END）
+         sed -i '/# BEGIN-RULE-CUSTOM/,/# END-RULE-CUSTOM/d' sr_top500_whitelist_ad.conf
+
+         # 插入 rule.txt 到 [Rule] 下方
+         awk 'BEGIN { found=0 }
+           /^\[Rule\]/ { print; found=1; next }
+           found==1 && !inserted {
+           system("cat rule.txt");
+           inserted=1
+          }
+          { print }' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
+
+        
 
 
 

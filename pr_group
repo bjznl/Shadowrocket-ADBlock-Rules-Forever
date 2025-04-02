@@ -4,11 +4,3 @@ HK = url-test,香港 01 | 专线,香港 02 | 专线,香港 03 | 专线,香港 04
 SG = url-test,新加坡 01 | 专线,新加坡 02 | 专线,新加坡 03 | 专线,新加坡 04 | 专线,新加坡 05 | 专线,V350U-1X-BGP-SG-NF,V351U-1X-BGP-SG-NF,V352U-1X-BGP-SG-NF,V353U-1X-BGP-SG-NF,V354U-2X-BGP-SG-NF,V355U-2X-BGP-SG-NF,V356U-2X-BGP-SG-NF,V357U-2X-BGP-SG-NF,V358U-4X-BGP-SG-NF,V359U-4X-BGP-SG-NF,interval=2400,tolerance=100,timeout=5,url=http://www.gstatic.com/generate_204
 JP = url-test,V332U-1X-BGP-JP-NF,V333U-1X-BGP-JP-NF,V334U-1X-BGP-JP-NF,V335U-1X-BGP-JP-NF,V336U-2X-BGP-JP-NF,V337U-2X-BGP-JP-NF,V338U-2X-BGP-JP-NF,V339U-2X-BGP-JP-NF,日本 01 | 专线,日本 02 | 专线,日本 03 | 专线,policy-select-name=V332U-1X-BGP-JP-NF,interval=2400,tolerance=100,timeout=5,url=http://www.gstatic.com/generate_204
 USA = url-test,V380U-1X-BGP-US-NF,V381U-1X-BGP-US-NF,V382U-1X-BGP-US-NF,V383U-1X-BGP-US-NF,V386U-2X-BGP-US-NF,V387U-2X-BGP-US-NF,V388U-2X-BGP-US-NF,V389U-2X-BGP-US-NF,美国 01 | 专线 | 限速,policy-select-name=V380U-1X-BGP-US-NF,interval=2400,tolerance=100,timeout=5,url=http://www.gstatic.com/generate_204
-
-[Rule]
-DOMAIN-SUFFIX,t-mobile.com,SELF_HOST
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Twitter/Twitter.list,HK
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Claude/Claude.list,SELF_HOST
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/OpenAI/OpenAI.list,SELF_HOST
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Gemini/Gemini.list,SELF_HOST
-RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/TikTok/TikTok.list,USA

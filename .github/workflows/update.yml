@@ -27,9 +27,10 @@ jobs:
         git fetch upstream
         git checkout upstream/release -- sr_top500_whitelist_ad.conf
 
-    - name: Insert custom content
+    - name: Insert Proxy Group above [Rule]
       run: |
-        awk '/^\[Rule\]/ { system("cat mine.txt"); print; next } 1' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
+        grep -q '\[Proxy Group\]' sr_top500_whitelist_ad.conf && echo "Already inserted" && exit 0
+        awk '/^\[Rule\]/ { system("awk \"/^\[Rule\]/ {exit} {print}\" mine.txt"); print; next } 1' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
 
 
     - name: Commit and Push

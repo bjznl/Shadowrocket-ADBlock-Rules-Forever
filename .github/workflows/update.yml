@@ -23,7 +23,7 @@ jobs:
 
     - name: Fetch latest config file from upstream
       run: |
-        git remote add upstream https://github.com/blackmatrix7/Shadowrocket-ADBlock-Rules.git
+        git remote add upstream https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever.git
         git fetch upstream
         git checkout upstream/main -- sr_top500_whitelist_ad.conf
 

@@ -27,26 +27,20 @@ jobs:
         git fetch upstream
         git checkout upstream/release -- sr_top500_whitelist_ad.conf
 
-    - name: Insert Proxy Group above and Rules below [Rule]
+    - name: Insert Proxy Group & Rules around [Rule]
       run: |
-        grep -q '\[Proxy Group\]' sr_top500_whitelist_ad.conf && echo "Already inserted" && exit 0
+        # 插入 pr_group.txt 到 [Rule] 上方
+        awk '/^\[Rule\]/ { system("cat pr_group.txt"); print; next } 1' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
 
-        # 插入 [Proxy Group] 到 [Rule] 前面
-        awk '/^\[Rule\]/ {
-            system("awk \"/^\[Rule\]/ {exit} {print}\" mine.txt");
-            print;
-            next
-        }
-        1' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
-
-        # 插入 [Rule] 后的规则内容
+        # 插入 rule.txt 到 [Rule] 下方
         awk 'BEGIN { found=0 }
         /^\[Rule\]/ { print; found=1; next }
         found==1 && !inserted {
-            system("awk \"/^\[Rule\]/ {found=1; next} found {print}\" mine.txt");
+            system("cat rule.txt");
             inserted=1
         }
         { print }' sr_top500_whitelist_ad.conf > tmp && mv tmp sr_top500_whitelist_ad.conf
+
 
 
 

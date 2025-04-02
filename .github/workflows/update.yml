@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout release branch
+    - name: Checkout my-edits branch
       uses: actions/checkout@v3
       with:
-        ref: release
+        ref: my-edits
         persist-credentials: false
 
     - name: Set up Git
@@ -30,7 +30,7 @@ jobs:
     - name: Insert content from mine.txt after update-url
       run: |
         awk '/update-url/ { print; system("cat mine.txt"); next } 1' sr_top500_whitelist_ad.conf > tmp.conf && mv tmp.conf sr_top500_whitelist_ad.conf
-     
+
     - name: Commit and push changes
       run: |
         git add sr_top500_whitelist_ad.conf

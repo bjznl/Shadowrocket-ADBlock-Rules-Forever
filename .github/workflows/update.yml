@@ -1,4 +1,4 @@
-name: Daily Sync & Modify
+name: Daily Sync & Modify new
 
 on:
   schedule:

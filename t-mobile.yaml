@@ -6,6 +6,7 @@
 # TOTAL: 111
 payload:
   - DOMAIN-SUFFIX,t-mobile.com
+  - DOMAIN-SUFFIX,t-mobile.app.link
   - DOMAIN,epdg.epc.mnc240.mcc310.pub.3gppnetwork.org
   - DOMAIN,epdg.epc.mnc260.mcc310.pub.3gppnetwork.org 
   - DOMAIN,ss.epdg.epc.mnc260.mcc310.pub.3gppnetwork.org
